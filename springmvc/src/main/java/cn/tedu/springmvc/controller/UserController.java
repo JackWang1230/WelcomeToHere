@@ -11,9 +11,9 @@ import org.springframework.web.bind.annotation.RequestParam;
 @Controller
 public class UserController {
 	
-	@RequestMapping("/hobby")
+	@RequestMapping("/hobby")  //请求的url，可以任意请求
 	public String ss(){
-		return "hobby";
+		return "hobby"; //返回到jsp
 	}
 
 	@RequestMapping("/hobby.do")
