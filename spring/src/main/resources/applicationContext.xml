@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans 
+	http://www.springframework.org/schema/beans/spring-beans-4.0.xsd">
+	
+	<bean id="user" class="cn.tedu.spring.User" >
+	<property name="name" value="hello"/>
+	<property name="age" value="18"/>
+	<property name="dog" ref="dog"></property>
+	
+	<property name="list" >
+		<list>
+			<value>aaa</value>
+			<value>bbb</value>
+			<value>ccc</value>
+		</list>
+	</property>
+	
+	<property name="set">
+		<set>
+			<value>we</value>
+			<value>wew</value>
+		</set>
+	</property>
+	
+	<property name="map">
+	<map>
+		<entry key="0" value="xiaozhu"/>
+		<entry key="1" value="xiaohong"/>
+	</map>
+	</property>
+	
+	<property name="dbparas">
+		<props>
+			<prop key="username">root</prop>
+			<prop key="password">123456</prop>
+		</props>
+	</property>
+	</bean>
+	<bean id="dog" class="cn.tedu.spring.Dog"/>
+	
+	<bean id="dept" class="cn.tedu.spring.Dept">
+	<!-- index 代表的时传入的第一个值 第二个值  类似于servlet中 的sql 传入第一个值？ 第二个值？setString(1 ,'124') -->
+		<constructor-arg index="0" value="001"/>
+		<constructor-arg index="1" value="研发部"/>
+	</bean>
+	
+</beans>
