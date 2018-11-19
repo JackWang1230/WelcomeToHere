@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE configuration
+  PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-config.dtd">
+  <!-- 环境：数据源（4个参数）、事务，这些配置都被spring接管全局设定 -->
+<configuration>
+	
+</configuration>
