@@ -8,16 +8,19 @@
 	http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-4.0.xsd http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-4.0.xsd
 	http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util-4.0.xsd">
 	
+	<context:property-placeholder location="classpath:jdbc.properties"/>
+	<context:annotation-config></context:annotation-config>
+	
 	<!-- 包扫描，扫描service  为了扫描这个service的注解 -->
 	<context:component-scan base-package="cn.tedu.ssm.service"/>
 	<!-- 数据源druid，阿里开源，4个参数，id名称是固定的 
 		释放资源：destroy-method，调用自己写的close方法，不关闭对象，放回池子中
 	-->
 	<bean id="dataSource" class="com.alibaba.druid.pool.DruidDataSource"  destroy-method="close">
-		<property name="driverClassName" value="com.mysql.jdbc.Driver"/>
-		<property name="url" value="jdbc:mysql://127.0.0.1:3306/yhmisdb?characterEncoding=utf8"/>
-		<property name="username" value="root"/>
-		<property name="password" value="123456"/>
+		<property name="driverClassName" value="${db.driver}"/>
+		<property name="url" value="${db.url}"/>
+		<property name="username" value="${db.username}"/>
+		<property name="password" value="${db.password}"/>
 	</bean>
 	
 	

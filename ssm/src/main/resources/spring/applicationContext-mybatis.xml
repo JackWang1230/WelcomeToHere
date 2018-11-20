@@ -19,6 +19,8 @@
 		<property name="configLocation" value="classpath:mybatis/mybatis-config.xml" />
 		<!-- 映射文件 -->
 		<property name="mapperLocations" value="classpath:mybatis/mapper/*.xml" />
+		<!-- pojo对象设置别名，会自动把这个目录下的所有的类Door，别名设置为类名Door -->
+		<property name="typeAliasesPackage" value="cn.tedu.ssm.pojo"/>
 
 	</bean>
 

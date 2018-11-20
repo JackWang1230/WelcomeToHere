@@ -1,5 +1,6 @@
 package cn.tedu.ssm.service;
 
+import java.util.Date;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,6 +17,27 @@ public class DoorServiceImpl implements DoorService {
 		
 	public List<Door> find(){
 		return doorMapper.find();
+	}
+	public void insert(Door door){
+		door.setCreated(new Date());
+		door.setUpdated(door.getCreated());
+		doorMapper.insert(door);//插入的是door的对象传入的值
+	}
+	
+	public void update(Door door){
+		doorMapper.update(door);
+	}
+	
+	public void delete(Integer id){
+		doorMapper.delete(id);
+	}
+	
+	public void deleteMuch(Integer[] a){
+		doorMapper.deleteMuch(a);
+	}
+	
+	public Door get(Integer id){
+		return doorMapper.get(id);
 	}
 	
 }
