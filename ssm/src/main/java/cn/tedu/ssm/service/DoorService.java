@@ -11,5 +11,5 @@ public interface DoorService {
 	public void update(Door door);
 	public void delete(Integer id);
 	public void deleteMuch(Integer[] a);
-	public Door get(Integer id);
+	public Door get(Integer id);  //方法的公开，将接口中的私有方法，通过这种方式，就可以获取公开
 }

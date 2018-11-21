@@ -2,5 +2,10 @@ cn\tedu\ssm\pojo\Door.class
 cn\tedu\ssm\service\DoorService.class
 cn\tedu\ssm\pojo\BasePojo.class
 cn\tedu\ssm\controller\DoorController.class
+cn\tedu\ssm\pojo\Order.class
 cn\tedu\ssm\service\DoorServiceImpl.class
+cn\tedu\ssm\controller\OrderController.class
+cn\tedu\ssm\service\OrderService.class
+cn\tedu\ssm\service\OrderServiceImpl.class
+cn\tedu\ssm\mapper\OrderMapper.class
 cn\tedu\ssm\mapper\DoorMapper.class

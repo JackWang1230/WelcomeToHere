@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.tedu.ssm.mapper.OrderMapper">
+	<resultMap type="Order" id="orderRM">
+		<id property="id" column="id" />
+		<result property="orderNo" column="order_no" />
+		<result property="orderType" column="order_type" />
+		<result property="personNum" column="person_num" />
+		<result property="cashier" column="cashier" />
+		<result property="createTime" column="create_time" />
+		<result property="endTime" column="end_time" />
+		<result property="paymentType" column="payment_type" />
+		<result property="price" column="price" />
+
+		<result property="created" column="created" />
+		<result property="updated" column="updated" />
+		<association property="door" javaType="Door">
+			<id property="id" column="id" />
+			<result property="name" column="name" />
+			<result property="tel" column="tel" />
+		</association>
+	</resultMap>
+
+	<select id="find" resultMap="orderRM">
+		select o.id ,o.door_id, d.name
+		,d.tel,o.order_no,o.order_type,o.person_num,o.cashier,o.create_time,o.end_time,o.payment_type,o.price,o.created,o.updated
+		from
+		(select id ,door_id,
+		order_no,order_type,person_num,cashier,create_time,end_time,payment_type,price,created,updated
+		from tb_order) o
+		left join
+		(select id ,name ,tel ,created ,updated from
+		tb_door) d
+		on o.door_id = d.id;
+
+	</select>
+
+	<select id="get" parameterType="int" resultMap="orderRM">
+		SELECT
+		o.door_id,o.id,
+		d.name AS door_name,d.tel,
+		o.order_no,o.order_type,o.person_num,o.cashier,o.create_time,o.end_time,o.payment_type,o.price
+		FROM
+		(SELECT
+		id,door_id,order_no,order_type,person_num,cashier,create_time,end_time,payment_type,price
+		FROM tb_order where id=#{id}) o
+		LEFT JOIN
+		(SELECT id,NAME,tel FROM
+		tb_door) d
+		ON o.door_id=d.id
+	</select>
+
+	<insert id="insert" parameterType="Order">
+		INSERT INTO tb_order
+		(order_no,door_id,order_type,person_num,cashier,
+		create_time,end_time,payment_type,price,
+		created,updated)
+		VALUES
+		(#{orderNo},#{door.id},
+		#{orderType},#{personNum},#{cashier},
+		#{createTime},#{endTime},#{paymentType},#{price},
+		#{created},#{updated}
+		)
+	</insert>
+
+
+	<update id="update" parameterType="Order">
+		UPDATE tb_order SET
+		door_id=#{door.id},order_no=#{orderNo},order_type=#{orderType},
+		person_num=#{personNum},cashier=#{cashier},
+		create_time=#{createTime},end_time=#{endTime},
+		payment_type=#{paymentType},price=#{price},
+		updated=NOW()
+		WHERE id=#{id}
+	</update>
+</mapper>

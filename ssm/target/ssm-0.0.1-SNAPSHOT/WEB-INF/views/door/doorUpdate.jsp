@@ -9,20 +9,20 @@
 </head>
 <body>
 	<form action="/door/update" method="post">
-		<input type="hidden" name="id" value="${door.id }"/>
+		<input type="hidden" name="id" value="${door.id}"/>
 		<h1>永和大王门店系统(修改)</h1>
 		<table border="1">
 			<tr>
 				<td>门店名称</td>
-				<td><input type="text" name="name" value="${door.name }"/></td>
+				<td><input type="text" name="name" value="${door.name}"/></td>
 			</tr>
 			<tr>
 				<td>电话号码</td>
-				<td><input type="text" name="tel" value="${door.tel }"/></td>
+				<td><input type="text" name="tel" value="${door.tel}"/></td>
 			</tr>
 		</table>
 
-		<div style="paddind: 10px">
+		<div style="padding:10px">
 			<input type="submit" value="提交">
 		</div>
 	</form>
